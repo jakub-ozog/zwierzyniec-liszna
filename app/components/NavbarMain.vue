@@ -18,7 +18,15 @@ import {
 } from "@/components/ui/drawer";
 
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-vue-next";
+import { Menu, Facebook, Instagram, CircleX } from "lucide-vue-next";
+
+// const isDrawerOpen = ref(false);
+const isMobileNavOpen = ref(false);
+
+// Track dropdown states separately
+const dropdownStates = reactive({
+  "Zwierzęta": false
+});
 
 const links = [
   {
@@ -72,7 +80,7 @@ const links = [
 </script>
 
 <template>
-  <nav class=" flex items-center justify-between py-4 px-6 xl:px-12">
+  <nav class="flex items-center justify-between py-4 px-6 xl:px-12">
     <NuxtLink to="/">
       <NuxtImg
         src="/images/logo/logo-1.webp"
@@ -125,7 +133,11 @@ const links = [
     <!-- mobile navigation -->
 
     <div class="block lg:hidden">
-      <Drawer class="hidden lg:block" direction="right">
+      <Drawer
+        v-model:open="isMobileNavOpen"
+        class="hidden lg:block"
+        direction="right"
+      >
         <DrawerTrigger as-child>
           <Button variant="outline">
             <Menu size="24" />
@@ -134,19 +146,85 @@ const links = [
         <DrawerContent>
           <div class="mx-auto w-full max-w-sm">
             <DrawerHeader>
-              <DrawerTitle>Move Goal</DrawerTitle>
-              <DrawerDescription
-                >Set your daily activity goal.</DrawerDescription
-              >
+              <DrawerTitle class="flex items-center justify-between mb-4">
+                <NuxtImg
+                  src="/images/logo/logo-1.webp"
+                  alt="Logo"
+                  width="30"
+                  height="30"
+                />
+
+                <DrawerClose as-child>
+                  <CircleX class="cursor-pointer" />
+                </DrawerClose>
+              </DrawerTitle>
+              <DrawerDescription>
+                <ul class="flex flex-col text-right">
+                  <li
+                    v-for="link in links"
+                    :key="link.name"
+                    class="relative p-6 text-lg text-bold text-zinc-950 border-b border-zinc-100 last:border-b-0"
+                  >
+                    <template v-if="link.items && link.items.length">
+                      <details
+                        class=""
+                        @toggle="(e) => (dropdownStates[link.name] = e.target.open)"
+                      >
+                        <summary
+                          class="flex items-center cursor-pointer select-none text-right group justify-end"
+                        >
+                          {{ link.label }}
+                          <svg
+                            class="ml-1 transition-transform duration-200"
+                            :class="{ 'rotate-180': dropdownStates[link.name] }"
+                            width="16"
+                            height="16"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M6 9l6 6 6-6" />
+                          </svg>
+                        </summary>
+                        <ul class="pl-4 mt-2">
+                          <li
+                            v-for="item in link.items"
+                            :key="item.name"
+                            class="py-1"
+                          >
+                            <NuxtLink
+                              :to="item.path"
+                              @click="isMobileNavOpen = false"
+                              >{{ item.label }}</NuxtLink
+                            >
+                          </li>
+                        </ul>
+                      </details>
+                    </template>
+                    <template v-else>
+                      <NuxtLink
+                        :to="link.path"
+                        @click="isMobileNavOpen = false"
+                        >{{ link.label }}</NuxtLink
+                      >
+                    </template>
+                  </li>
+                </ul>
+              </DrawerDescription>
             </DrawerHeader>
 
-            <DrawerFooter>
-              <Button>Submit</Button>
-              <DrawerClose as-child>
-                <!-- <Button variant="outline">
-              Cancel
-            </Button> -->
-              </DrawerClose>
+            <DrawerFooter class="">
+              <div
+                class="flex items-center flex-direction-row text-right justify-end gap-2"
+              >
+                <NuxtLink to="">
+                  <Facebook class="w-6 h-8 cursor-pointer text-black mr-2" />
+                </NuxtLink>
+                <NuxtLink to="">
+                  <Instagram class="w-6 h-8 cursor-pointer text-black" />
+                </NuxtLink>
+              </div>
             </DrawerFooter>
           </div>
         </DrawerContent>
