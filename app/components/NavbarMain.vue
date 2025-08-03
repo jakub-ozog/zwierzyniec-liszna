@@ -85,8 +85,7 @@ const links = [
       <NuxtImg
         src="/images/logo/logo-1.webp"
         alt="Logo"
-        width="90"
-        height="90"
+      class="w-18 h-18 lg:w-28 lg:h-28" 
       />
     </NuxtLink>
 
@@ -146,18 +145,17 @@ const links = [
         <DrawerContent>
           <div class="mx-auto w-full max-w-sm">
             <DrawerHeader>
-              <DrawerTitle class="flex items-center justify-between mb-4">
+              <div class="flex items-center justify-between mb-4 mt-8">
                 <NuxtImg
                   src="/images/logo/logo-1.webp"
                   alt="Logo"
-                  width="30"
-                  height="30"
+                  class="w-12 h-12 opacity-25"
                 />
 
                 <DrawerClose as-child>
                   <CircleX class="cursor-pointer" />
                 </DrawerClose>
-              </DrawerTitle>
+              </div>
               <DrawerDescription>
                 <ul class="flex flex-col text-right">
                   <li
