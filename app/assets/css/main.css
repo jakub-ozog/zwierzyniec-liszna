@@ -3,11 +3,41 @@
 
 @custom-variant dark (&:is(.dark *));
 
-body {
-  font-family: 'Epilogue', sans-serif;
+/* Global typography defaults using Tailwind layers */
+@layer base {
+  body {
+    font-family: 'Epilogue', sans-serif;
+    line-height: 26px; /* Global line-height */
+  }
+  
+  /* Apply to text elements */
+  p, li, div, span {
+    line-height: 26px;
+  }
+  
+  /* Headings can have different line-height */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3;
+  }
+}
+
+/* CSS custom properties for line-height variations */
+:root {
+  --line-height-default: 26px;
+  --line-height-relaxed: 30px;
+  --line-height-loose: 34px;
+  --line-height-tight: 22px;
 }
 
 @theme inline {
+  /* Your custom zoo colors */
+  --color-gray-border: hsl(0, 0, 15, 40%);
+  --color-dark-text: #262626;
+  --color-dark-green: #1E3321;
+  --color-green-accent: #2F5B3C;
+  --color-orange-accent: #D68C45;
+  
+  /* Existing shadcn colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

@@ -13,7 +13,6 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
@@ -25,7 +24,7 @@ const isMobileNavOpen = ref(false);
 
 // Track dropdown states separately
 const dropdownStates = reactive({
-  "Zwierzęta": false
+  Zwierzęta: false,
 });
 
 const links = [
@@ -80,18 +79,22 @@ const links = [
 </script>
 
 <template>
-  <nav class="flex items-center justify-between py-4 px-6 xl:px-12">
+  <nav class="flex items-center justify-between py-4 px-8  xl:px-12">
     <NuxtLink to="/">
       <NuxtImg
         src="/images/logo/logo-1.webp"
         alt="Logo"
-      class="w-18 h-18 lg:w-28 lg:h-28" 
+        class="w-18 h-18 lg:w-24 lg:h-24 xl:w-28 xl:h-28"
       />
     </NuxtLink>
 
     <!-- desktop navigation -->
-    <ul class="gap-8 hidden lg:flex">
-      <li v-for="link in links" :key="link.name" class="relative p-4">
+    <ul class="gap-4 hidden lg:flex">
+      <li 
+        v-for="link in links"
+        :key="link.name"
+        class="relative p-4 text-dark-text text-lg hover:text-green-accent   transition-colors duration-200"
+      >
         <!-- Dropdown for 'Zwierzęta' -->
         <template v-if="link.items && link.items.length">
           <DropdownMenu>
@@ -112,13 +115,14 @@ const links = [
               </svg>
             </DropdownMenuTrigger>
             <DropdownMenuContent class="min-w-[220px]">
-              <DropdownMenuItem
+                <DropdownMenuItem
                 v-for="item in link.items"
                 :key="item.name"
                 as-child
-              >
-                <NuxtLink :to="item.path">{{ item.label }}</NuxtLink>
-              </DropdownMenuItem>
+                class="py-4 px-6 text-lg cursor-pointer hover:text-green-accent"
+                >  
+                <NuxtLink class="text-dark-text hover:bg-gray-100 hover:text-green-accent w-full block" :to="item.path">{{ item.label }}</NuxtLink>
+                </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </template>
@@ -166,7 +170,9 @@ const links = [
                     <template v-if="link.items && link.items.length">
                       <details
                         class=""
-                        @toggle="(e) => (dropdownStates[link.name] = e.target.open)"
+                        @toggle="
+                          (e) => (dropdownStates[link.name] = e.target.open)
+                        "
                       >
                         <summary
                           class="flex items-center cursor-pointer select-none text-right group justify-end"
