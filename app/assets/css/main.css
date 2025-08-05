@@ -5,9 +5,18 @@
 
 /* Global typography defaults using Tailwind layers */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    scroll-behavior: smooth;
+  }
+  
   body {
     font-family: 'Epilogue', sans-serif;
     line-height: 26px; /* Global line-height */
+    scroll-behavior: smooth;
   }
   
   /* Apply to text elements */

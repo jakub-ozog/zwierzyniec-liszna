@@ -5,6 +5,7 @@ import CardHomepage from "~/components/CardHomepage.vue";
 import CarouselHomepage from "~/components/CarouselHomepage.vue";
 import LatestArticle from "~/components/LatestArticle.vue";
 import { CircleCheckBig } from "lucide-vue-next";
+import Separator from "~/components/ui/separator/Separator.vue";
 
 // HomePage component for the mini zoo
 definePageMeta({
@@ -36,30 +37,33 @@ definePageMeta({
               Odwiedź nasze urocze zwierzęta <br />i spędź niezapomniane chwile
               wśród natury.
             </p>
-            <Button variant="outline"
-              class="text-white hover:bg-transparent bg-transparent border-2 border-white hover:text-dark-text hover:bg-white cursor-pointer p-6 rounded-none">
-              Zobacz więcej
-            </Button>
+            <NuxtLink to="#welcome" class="flex items-center gap-2">
+              <Button variant="outline"
+                class="text-white  bg-transparent border-2 border-white hover:text-dark-text hover:bg-white cursor-pointer p-6 rounded-none">
+                Zobacz więcej
+              </Button>
+            </NuxtLink>
           </div>
         </div>
       </div>
     </section>
-    <section class="container mx-auto mt-24 px-8 lg:p-0">
+    <section class="container mx-auto mt-12 px-8 lg:p-0">
       <div class="flex-col flex xl:flex-row items-flex-start justify-between">
         <div class="text-left w-full xl:w-2/4">
-          <div class="text-green-accent text-center lg:text-left rounded-lg p-4">
-            <h2 class="text-3xl lg:text-4xl mb-4 text-dark-text font-semibold">
+          <div id="welcome" class="text-green-accent text-left rounded-lg ">
+            <h2 class="text-4xl lg:text-5xl mb-4 text-dark-text font-semibold">
               Witamy w Leśnym Zwierzyńcu Liszna
             </h2>
             <p class="text-dark-text mb-4">
               – wyjątkowym miejscu, gdzie natura spotyka się z pasją do
               zwierząt, a edukacja przeplata się z beztroską zabawą. Położony w
-              malowniczej Bieszczadach, w sercu urokliwej miejscowości Liszna,
+              malowniczych Bieszczadach, w sercu urokliwej miejscowości Liszna,
               nasz zwierzyniec to idealne miejsce na niezapomnianą przygodę dla
               całej rodziny.
             </p>
           </div>
-          <h3 class="text-lg md:text-xl lg:text-2xl mb-4 mt-6 text-dark-text font-medium">
+          <Separator class="my-6" />
+          <h3 class="text-lg md:text-xl lg:text-2xl mb-4 mt-12 text-dark-text font-medium">
             Nasza pasja: bliskość z naturą i szacunek do życia
           </h3>
           <p class="text-dark-text">
@@ -116,9 +120,7 @@ definePageMeta({
             <!-- (Opcjonalnie: dodaj kilka konkretnych gatunków, które masz i chcesz wyróżnić, np. "ciekawskie surykatki", "egzotyczne papugi", "dziki" itp.) -->
           </ul>
         </div>
-        <NuxtImg 
-        src="/images/owl.webp" 
-        alt="Sowa na drzewie"
+        <NuxtImg src="/images/owl.webp" alt="Sowa na drzewie"
           class="max-w-[490px] w-full shadow-2xl mx-auto xl:m-0 object-cover rounded-lg mb-8 hover:scale-105 transition-transform duration-400 border-[15px] border-white lg:mt-12"
           style="border-radius: 25px" />
       </div>
@@ -139,7 +141,7 @@ definePageMeta({
       <LatestArticle />
     </section>
 
-    <section class="container mx-auto mt-24 p-8 lg:p-0">
+    <section class="container mx-auto mt-12 p-8 lg:p-0">
       <h2 class="text-xl md:text-2xl lg:text-4xl text-dark-text font-semibold mb-6">
         Zobacz nas na Instagramie
       </h2>

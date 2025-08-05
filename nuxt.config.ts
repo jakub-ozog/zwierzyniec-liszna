@@ -3,28 +3,39 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   modules: [
-    '@nuxt/eslint',
-    '@nuxt/image',
-    '@nuxtjs/google-fonts',
-    'shadcn-nuxt',
+    "@nuxt/eslint",
+    "@nuxt/image",
+    "@nuxtjs/google-fonts",
+    "shadcn-nuxt",
+    "nuxt-anchorscroll",
   ],
-  css: ['~/assets/css/main.css'],
+  css: ["~/assets/css/main.css"],
   googleFonts: {
     families: {
-      Epilogue: [300, 400, 500, 600, 700]
-    }
+      Epilogue: [300, 400, 500, 600, 700],
+    },
   },
   shadcn: {
-    prefix: '',
-    componentDir: './components/ui',
+    prefix: "",
+    componentDir: "./components/ui",
   },
 
-  vite: {
-    plugins: [
-      tailwindcss(),
+  anchorscroll: {
+    hooks: [
+      // Or any valid hook if needed
+      // Default is `page:finish`
+      "page:transition:finish",
     ],
   },
-})
+  router: {
+    options: {
+      scrollBehaviorType: "smooth",
+    },
+  },
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
