@@ -161,7 +161,7 @@ import Separator from "./ui/separator/Separator.vue";
     
     <Separator class="my-8" />
        <div
-        class=" container flex flex-col sm:flex-row justify-around md:justify-between items-center gap-5 text-muted-foreground "
+        class=" container flex flex-col sm:flex-row justify-around md:justify-between items-center gap-5 text-muted-foreground mx-auto "
       >
         <div class="flex flex-col items-center sm:items-start justify-between ">
           <p class="text-gray-500 text-xs max-w-xs text-center sm:text-left">
