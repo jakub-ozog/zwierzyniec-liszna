@@ -6,5 +6,18 @@
         "activityBar.background": "#251E77",
         "titleBar.activeBackground": "#342AA7",
         "titleBar.activeForeground": "#FCFCFE"
+    },
+    "editor.defaultFormatter": "Vue.volar",
+    "[vue]": {
+        "editor.defaultFormatter": "Vue.volar"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "Vue.volar"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "Vue.volar"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "Vue.volar"
     }
 }

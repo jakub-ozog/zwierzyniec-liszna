@@ -48,7 +48,7 @@ const animalItems = [
 
 <template>
   <Carousel
-    class="relative w-full mx-auto"
+    class="relative w-full mx-auto cursor-grab"
     :plugins="[autoScrollPlugin]"
     :opts="{
       loop: true,
@@ -78,7 +78,7 @@ const animalItems = [
         </div>
       </CarouselItem>
     </CarouselContent>
-    <CarouselPrevious class="hidden 2xl:block" @click="autoScrollPlugin.reset" />
-    <CarouselNext class="hidden 2xl:block" @click="autoScrollPlugin.reset" />
+    <CarouselPrevious class="hidden" @click="autoScrollPlugin.reset" />
+    <CarouselNext class="hidden" @click="autoScrollPlugin.reset" />
   </Carousel>
 </template>
