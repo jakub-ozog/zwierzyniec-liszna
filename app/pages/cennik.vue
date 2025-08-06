@@ -1,100 +1,75 @@
-
 <script setup>
-import { CheckCircle } from 'lucide-vue-next'
+import Badge from "~/components/ui/badge/Badge.vue";
+import Card from "~/components/ui/card/Card.vue";
+const features = [
+  {
+    title: "Dzieci do lat 3",
+    description:
+      "Bezpłatnie",
+      img: "/images/icons/children.png",
+  },
+  {
+    title: "Dzieci 3-17 lat",
+    description:
+      "20zł",
+    img: "/images/icons/teenagers.png",
+  },
+  {
+    title: "Emeryci oraz renciści",
+    description:
+      "20zł",
+    img: "/images/icons/old_friends.png",
+  },
+  {
+    title: "Dorośli",
+    description:
+      "25zł",
+    img: "/images/icons/family.png",
+  },
+  {
+    title: "Grupy zorganizowane",
+    description:
+      "Oferta indywidualna",
+    img: "/images/icons/teamwork.png",
+  },
+];
 
-const plans = [
-  {
-    name: "Starter",
-    price: 19,
-    description: "Get 20 AI-generated portraits with 2 unique styles and filters.",
-    features: [
-      "5 hours turnaround time",
-      "20 AI portraits",
-      "Choice of 2 styles",
-      "Choice of 2 filters",
-      "2 retouch credits",
-    ],
-    buttonText: "Get 20 portraits in 5 hours",
-  },
-  {
-    name: "Advanced",
-    price: 29,
-    isRecommended: true,
-    description: "Get 50 AI-generated portraits with 5 unique styles and filters.",
-    features: [
-      "3 hours turnaround time",
-      "50 AI portraits",
-      "Choice of 5 styles",
-      "Choice of 5 filters",
-      "5 retouch credits",
-    ],
-    buttonText: "Get 50 portraits in 3 hours",
-    isPopular: true,
-  },
-  {
-    name: "Premium",
-    price: 49,
-    description: "Get 100 AI-generated portraits with 10 unique styles and filters.",
-    features: [
-      "1-hour turnaround time",
-      "100 AI portraits",
-      "Choice of 10 styles",
-      "Choice of 10 filters",
-      "10 retouch credits",
-    ],
-    buttonText: "Get 100 portraits in 1 hour",
-  },
-]
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center py-12 px-6">
-    <h1 class="text-5xl font-bold text-center tracking-tight">Cennik</h1>
-    <div class="mt-12 max-w-screen-lg mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <div 
-        v-for="plan in plans" 
-        :key="plan.name" 
-        class="border rounded-lg p-6 relative"
-        :class="{ 'ring-2 ring-blue-500': plan.isPopular }"
-      >
-        <div v-if="plan.isPopular" class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-            Most Popular
-          </span>
-        </div>
-        
-        <h3 class="text-lg font-medium">{{ plan.name }}</h3>
-        <p class="mt-2 text-4xl font-bold">${{ plan.price }}</p>
-        <p class="mt-4 font-medium text-gray-600">
-          {{ plan.description }}
-        </p>
-        
-        <div class="my-4 border-t border-gray-200"></div>
-        
-        <ul class="space-y-2">
-          <li 
-            v-for="feature in plan.features" 
-            :key="feature" 
-            class="flex items-start gap-2"
-          >
-            <CheckCircle class="h-4 w-4 mt-1 text-green-600 flex-shrink-0" />
-            <span>{{ feature }}</span>
-          </li>
-        </ul>
-        
-        <button
-          :class="[
-            'w-full mt-6 px-4 py-2 rounded-md font-medium transition-colors',
-            plan.isPopular 
-              ? 'bg-blue-600 text-white hover:bg-blue-700' 
-              : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
-          ]"
-        >
-          {{ plan.buttonText }}
-        </button>
-      </div>
+  <section class="pb-20 pt-20 md:pb-32 md:pt-32 container mx-auto">
+    <div class="text-center space-y-4 pb-16 mx-auto max-w-4xl">
+      <Badge class="bg-orange-accent">Cennik</Badge>
+      <h2 class="mx-auto mt-4 text-3xl font-bold sm:text-5xl tracking-tight">
+        Sprawdź nasz cennik
+      </h2>
+      <p class="text-lg text-muted-foreground pt-1">
+     Odkryj magiczny świat zwierząt w przystępnej cenie. Poznaj opcje biletów oraz sprawdź ofertę indywidualną. 
+      </p>
     </div>
-  </div>
+
+    <Card
+      class="grid divide-x divide-y overflow-hidden rounded-3xl border border-card-100 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 lg:divide-y-0 ">
+      <template v-for="(feature, index) in features" :key="index">
+        <div class="group relative transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
+          <div class="relative space-y-8 py-12 p-8">
+            <img :src="feature.img" :alt="feature.title" class="w-18" width="512" height="512" />
+            <div class="space-y-2">
+              <h5 class="text-base text-muted-foreground font-normal transition group-hover:text-primary">
+                {{ feature.title }}
+              </h5>
+              <p class=" text-2xl text-orange-accent font-bold">{{ feature.description }}</p>
+            </div>
+            <!-- <a href="#" class="flex items-center justify-between group-hover:text-primary">
+              <span class="text-sm">Read more</span>
+              <ArrowRight
+                class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
+            </a> -->
+          </div>
+        </div>
+      </template>
+    </Card>
+  </section>
 </template>
 
 
