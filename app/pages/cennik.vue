@@ -6,7 +6,7 @@ const features = [
     title: "Dzieci do lat 3",
     description:
       "Bezpłatnie",
-      img: "/images/icons/children.png",
+    img: "/images/icons/children.png",
   },
   {
     title: "Dzieci 3-17 lat",
@@ -44,17 +44,20 @@ const features = [
         Sprawdź nasz cennik
       </h2>
       <p class="text-lg text-muted-foreground pt-1">
-     Odkryj magiczny świat zwierząt w przystępnej cenie. Poznaj opcje biletów oraz sprawdź ofertę indywidualną. 
+        Odkryj magiczny świat zwierząt w przystępnej cenie. Poznaj opcje biletów oraz sprawdź ofertę indywidualną.
       </p>
     </div>
 
     <Card
-      class="grid divide-x divide-y overflow-hidden rounded-3xl border border-card-100 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 lg:divide-y-0 ">
+      class="flex flex-col sm:grid divide-x divide-y overflow-hidden rounded-3xl border border-card-100  sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 lg:divide-y-0 ">
       <template v-for="(feature, index) in features" :key="index">
-        <div class="group relative transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
+        <div
+          class="group relative transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10"
+          :class="index === 4 ? 'col-span-2 lg:col-span-4 xl:col-auto' : ''"
+        >
           <div class="relative space-y-8 py-12 p-8">
-            <img :src="feature.img" :alt="feature.title" class="w-18" width="512" height="512" />
-            <div class="space-y-2">
+            <img :src="feature.img" :alt="feature.title" class="w-18 mx-auto" width="512" height="512">
+            <div class="space-y-2 mx-auto text-center">
               <h5 class="text-base text-muted-foreground font-normal transition group-hover:text-primary">
                 {{ feature.title }}
               </h5>
