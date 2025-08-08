@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "shadcn-nuxt",
     "nuxt-anchorscroll",
+    "@nuxt/content",
   ],
   css: ["~/assets/css/main.css"],
   googleFonts: {
