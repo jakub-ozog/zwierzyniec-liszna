@@ -1,6 +1,5 @@
 <script setup>
-import { ref } from "vue";
-
+import { useArticles } from "../../composables/useArticles.js";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,34 +10,13 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { ChevronRight } from "lucide-vue-next";
 
-const articles = ref([
-  {
-    id: 1,
-    slug: "nowe-zwierzeta-w-zoo",
-    title: "Nowe zwierzęta w zoo!",
-    description: "Z radością informujemy, że do naszej rodziny dołączyły nowe zwierzęta. Przybyły do nas młode kozy karłowate oraz para królików miniaturowych.",
-    image: "/images/articles/article-1-thumb.webp",
-  },
-  {
-    id: 2,
-    slug: "wakacyjne-warsztaty-dla-dzieci",
-    title: "Wakacyjne warsztaty dla dzieci",
-    description: "Zapraszamy na wakacyjne warsztaty edukacyjne dla dzieci. Program obejmuje poznawanie zwierząt, karmienie i opiekę nad nimi.",
-    image: "/images/articles/article-2-thumb.webp",
-  },
-  {
-    id: 3,
-    slug: "modernizacja-wybiegow",
-    title: "Modernizacja wybiegów",
-    description: "Zakończyliśmy modernizację wybiegów dla naszych zwierząt. Wszystkie przestrzenie zostały rozszerzone i wyposażone w nowe elementy",
-    image: "/images/articles/article-3-thumb.webp",
-  },
-]);
+const articles = useArticles();
 </script>
 
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-3">
-    <div v-for="(article, index) in articles" :key="article.id" :class="[
+    <div 
+    v-for="(article, index) in articles" :key="article.id" :class="[
       'text-center items-center gap-6 mx-auto',
       index === 2 ? ' sm:col-span-2 lg:col-auto  sm:justify-self-center md:justify-self-auto' : '',
     ]">
@@ -81,11 +59,11 @@ const articles = ref([
     </div>
   </div>
   <div class="flex text-center mx-auto items-center justify-center container w-full mt-6">
-    <Button variant="ghost"
-      class="w-full sm:max-w-sm text-orange-accent pt-2 pb-2 gap-0 justify-self-center cursor-pointer underline underline-offset-5">
-      <NuxtLink to="/aktualnosci">
+    <NuxtLink to="/aktualnosci" class="w-full">
+      <Button variant="ghost"
+        class="w-full sm:max-w-sm text-orange-accent pt-2 pb-2 gap-0 justify-self-center cursor-pointer underline underline-offset-5">
         Przejdź do artykułów
-      </NuxtLink>
-    </Button>
+      </Button>
+    </NuxtLink>
   </div>
 </template>

@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "shadcn-nuxt",
     "nuxt-anchorscroll",
-    "@nuxt/content",
   ],
   css: ["~/assets/css/main.css"],
   googleFonts: {
@@ -30,11 +29,6 @@ export default defineNuxtConfig({
       // Default is `page:finish`
       "page:transition:finish",
     ],
-  },
-  router: {
-    options: {
-      scrollBehaviorType: "smooth",
-    },
   },
   vite: {
     plugins: [tailwindcss()],
